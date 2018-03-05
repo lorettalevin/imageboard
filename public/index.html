@@ -1,10 +1,23 @@
-<!doctype html>
+<!-- CLIENT SIDE -->
+
+<!DOCTYPE html>
 <html>
-<head>
-    <title></title>
-</head>
-<body>
-    <script src="/js/vue.js"></script>
-    <script src="/js/axios.min.js"></script>
-</body>
+    <head>
+        <meta charset="utf-8">
+        <title>Vue</title>
+    </head>
+    <body>
+        <h1>Vue</h1>
+
+        <div id="main">
+            <div v-for="image in images">
+                <img v-bind:src="image.image" alt="image">
+                <p>{{image.title}} {{image.description}}</p>
+            </div>
+        </div>
+
+        <script src="/js/vue.js"></script>
+        <script src="/js/axios.min.js"></script>
+        <script src="/js/script.js"></script>
+    </body>
 </html>
