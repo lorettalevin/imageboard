@@ -39,7 +39,25 @@ function addImagesToBrowser(title, description, username, image) {
     });
 }
 
+function getImageInfo(selectedImageID) {
+    return new Promise(function(resolve, reject) {
+        const q = `SELECT * FROM images WHERE id = $1`;
+        const params = [selectedImageID];
+        db.query(q, params).then(results => {
+            let images = results.rows;
+            images.forEach(item => {
+                let url = s3Url + item.image;
+                item.image = url;
+            });
+            resolve(images);
+        }).catch(err => {
+            reject(err);
+        });
+    });
+}
+
 module.exports = {
     getImages,
-    addImagesToBrowser
+    addImagesToBrowser,
+    getImageInfo
 };

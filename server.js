@@ -49,7 +49,14 @@ app.post('/upload', uploader.single('file'), s3.upload, function(req, res) {
 
 app.get("/images", (req, res) => {
     db.getImages().then(images => {
-        res.json({images: images}); //SENDING RESPONSE BACK TO THE CLIENT --> WHATEVER WE PUT IN RES.JSON GETS CAPTURED IN AXIOS OF THE "THEN" OF OUR GET REQUEST
+        res.json({images}); //SENDING RESPONSE BACK TO THE CLIENT --> WHATEVER WE PUT IN RES.JSON GETS CAPTURED IN AXIOS OF THE "THEN" OF OUR GET REQUEST
+    });
+});
+
+app.get("/modal/:selectedImageID", (req, res) => { //use req.params because of "/:"
+    console.log("server file", req.body, req.params);
+    db.getImageInfo(req.params.selectedImageID).then(results => {
+        res.json({results});
     });
 });
 

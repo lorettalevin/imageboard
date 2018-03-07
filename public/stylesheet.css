@@ -1,0 +1,54 @@
+* {
+    background-color: rgb(208, 204, 246);
+    font-family: arial;
+}
+
+img {
+    height: 300px;
+    width: 300px;
+    padding: 10px;
+}
+
+p {
+    color: rgb(98, 73, 157);
+    font-size: 20px;
+}
+
+input {
+    width: 150px;
+    height: 25px;
+    background-color: rgb(165, 189, 220);
+    font-size: 15px;
+}
+
+#choose-file {
+    width: 200px;
+    height: 22px;
+    font-size: 15px;
+    color: #827F7C;
+    padding: 2px;
+}
+
+button {
+    width: 75px;
+    height: 25px;
+    background-color: rgb(165, 189, 220);
+    border-radius: 10px;
+    font-size: 15px;
+    color: #827F7C;
+}
+
+#title {
+    color: rgb(98, 73, 157);
+}
+
+.image-container {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+}
+
+#modal {
+    border: 5px solid cyan;
+    background-color: teal;
+}

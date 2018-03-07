@@ -2,30 +2,39 @@
 
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <title>Vue</title>
-    </head>
-    <body>
-        <h1>Vue</h1>
-
-        <div id="main">
-            <form>
-                <input v-model="formStuff.title" type="text" name="title" placeholder="title">
-                <input v-model="formStuff.description" type="text" name="description" placeholder="description">
-                <input v-model="formStuff.username" type="text" name="username" placeholder="username">
-                <input v-on:change="handleChange" type="file">
-                <button v-on:click="handleSubmit">SUBMIT</button>
-            </form>
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="./stylesheet.css">
+    <title>Imageboard - Vue.js</title>
+</head>
+<body>
+    <h1 id="title">Fauxstagram</h1>
+    <div id="main">
+        <modal-component v-if="selectedImageID"
+                         v-bind:selected-image-i-d="selectedImageID">
+        </modal-component>
+        <form>
+            <input v-model="formStuff.title" type="text" name="title" placeholder="Title">
+            <input v-model="formStuff.description" type="text" name="description" placeholder="Description">
+            <input v-model="formStuff.username" type="text" name="username" placeholder="Username">
+            <input id="choose-file" v-on:change="handleChange" type="file">
+            <button v-on:click="handleSubmit">Submit</button>
+        </form>
+        <div class="image-container">
             <div v-for="image in images">
-                <img v-bind:src="image.image" alt="image">
-                <p>{{image.title}} {{image.description}}</p>
+                <img v-bind:src="image.image" alt="image" v-on:click="showImage(image.id)">
+                <p>{{image.title}} {{image.description}} {{image.id}}</p>
             </div>
         </div>
+    </div>
+    <script id="modal-template" type="x-template">
+        <div id="modal">
+            <p>{{username}}, {{title}}, {{description}}</p>
+        </div>
+    </script>
+    <script src="/js/vue.js"></script>
+    <script src="/js/axios.min.js"></script>
+    <script src="/js/script.js"></script>
+</body>
 
-
-        <script src="/js/vue.js"></script>
-        <script src="/js/axios.min.js"></script>
-        <script src="/js/script.js"></script>
-    </body>
 </html>
