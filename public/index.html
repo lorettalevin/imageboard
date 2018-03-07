@@ -10,11 +10,19 @@
         <h1>Vue</h1>
 
         <div id="main">
+            <form>
+                <input v-model="formStuff.title" type="text" name="title" placeholder="title">
+                <input v-model="formStuff.description" type="text" name="description" placeholder="description">
+                <input v-model="formStuff.username" type="text" name="username" placeholder="username">
+                <input v-on:change="handleChange" type="file">
+                <button v-on:click="handleSubmit">SUBMIT</button>
+            </form>
             <div v-for="image in images">
                 <img v-bind:src="image.image" alt="image">
                 <p>{{image.title}} {{image.description}}</p>
             </div>
         </div>
+
 
         <script src="/js/vue.js"></script>
         <script src="/js/axios.min.js"></script>

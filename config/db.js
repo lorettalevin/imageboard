@@ -11,7 +11,7 @@ function getImages() {
         db.query(q).then(results => {
             // console.log("results from our query:", results.rows);
             let images = results.rows;
-            images.forEach((item) => {
+            images.forEach(item => {
                 let url = s3Url + item.image; //***important line
                 item.image = url;
             });
@@ -22,6 +22,24 @@ function getImages() {
     });
 }
 
+function addImagesToBrowser(title, description, username, image) {
+    return new Promise(function(resolve, reject) {
+        const q = `INSERT into images (title, description, username, image) VALUES ($1, $2, $3, $4) RETURNING *`;
+        const params = [title, description, username, image];
+        db.query(q, params).then(results => {
+            let images = results.rows;
+            images.forEach(item => {
+                let url = s3Url + item.image;
+                item.image = url;
+            });
+            resolve(images);
+        }).catch(err => {
+            reject(err);
+        });
+    });
+}
+
 module.exports = {
-    getImages
+    getImages,
+    addImagesToBrowser
 };
