@@ -2,16 +2,17 @@
 
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="./stylesheet.css">
     <title>Imageboard - Vue.js</title>
 </head>
+
 <body>
-    <h1 id="title">Fauxstagram</h1>
+    <h1 id="title">Finstagram</h1>
     <div id="main">
-        <modal-component v-if="selectedImageID"
-                         v-bind:selected-image-i-d="selectedImageID">
+        <modal-component v-on:close="modalShut" v-if="selectedImageID" v-bind:selected-image-i-d="selectedImageID">
         </modal-component>
         <form>
             <input v-model="formStuff.title" type="text" name="title" placeholder="Title">
@@ -23,13 +24,25 @@
         <div class="image-container">
             <div v-for="image in images">
                 <img v-bind:src="image.image" alt="image" v-on:click="showImage(image.id)">
-                <p>{{image.title}} {{image.description}} {{image.id}}</p>
+                <!-- <a v-bind:href="'#' + image.id" v-for"image in images" class="item" alt="image" v-on:click="showImage(image.id)"> -->
+                <p>{{image.title}}</p>
             </div>
         </div>
+        <button v-on:click="morePics" id="more-button">MORE</button>
     </div>
     <script id="modal-template" type="x-template">
         <div id="modal">
-            <p>{{username}}, {{title}}, {{description}}</p>
+            <p id="X" v-on:click="closeModal">X</p>
+            <img id="large-image" v-bind:src="image" />
+            <h2 class="modal-text">{{title}}</h2>
+            <h3 class="modal-text">{{description}}</h3>
+            <p class="modal-text">{{username}}</p>
+            <form>
+                <input v-model="comment.comment" type="text" />
+                <input v-model="comment.username" type="text" />
+                <button v-on:click="postComment">Submit</button>
+            </form>
+            <p v-for="item in comment">{{item.username}}: {{item.comment}}</p>
         </div>
     </script>
     <script src="/js/vue.js"></script>

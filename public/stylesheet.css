@@ -4,8 +4,8 @@
 }
 
 img {
-    height: 300px;
-    width: 300px;
+    height: 325px;
+    width: 325px;
     padding: 10px;
 }
 
@@ -14,19 +14,20 @@ p {
     font-size: 20px;
 }
 
+form {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
 input {
+    display: flex;
+    justify-content: center;
+    align-content: space-around;
     width: 150px;
     height: 25px;
     background-color: rgb(165, 189, 220);
     font-size: 15px;
-}
-
-#choose-file {
-    width: 200px;
-    height: 22px;
-    font-size: 15px;
-    color: #827F7C;
-    padding: 2px;
 }
 
 button {
@@ -38,17 +39,64 @@ button {
     color: #827F7C;
 }
 
+body {
+    position: relative;
+    left: 1.5%;
+}
+
+#choose-file {
+    width: 200px;
+    height: 22px;
+    font-size: 15px;
+    color: #827F7C;
+    padding: 2px;
+}
+
 #title {
     color: rgb(98, 73, 157);
+    display: flex;
+    justify-content: center;
 }
 
 .image-container {
     display: flex;
-    flex-direction: row-reverse;
-    justify-content: flex-end;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+
+}
+
+#large-image {
+    height: 100px;
+    width: 100px;
+    display: flex;
+    justify-content: center;
+    order: 1;
 }
 
 #modal {
-    border: 5px solid cyan;
-    background-color: teal;
+    background-color: #5f2bc2ed;
+    height: 75%;
+    width: 75%;
+    position: absolute;
+    left: 12%;
+    bottom: 12%;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: flex-end;
+    align-items: flex-start; */
+}
+
+.modal-text {
+    display: flex;
+    flex-direction: column;
+    order: 2;
+    /* color: rgb(50, 215, 9); */
+}
+
+#X {
+    display: flex;
+    justify-content: flex-end;
+    align-content: flex-end;
+    color: rgb(50, 215, 9);
+    padding: 10px;
 }
