@@ -35,13 +35,14 @@ Vue.component('modal-component', {
     mounted: function() {
         var self = this; //when we go inside functions and use "this" it never works so we need to save it in a variable named "self"
         axios.get("/modal/" + this.selectedImageID).then(function(resp) {
-            const {id, image, username, title, description} = resp.data.results[0];
+            const {id, image, username, title, description, created_at} = resp.data.results[0];
             self.id = id;
             self.image = image;
             self.username = username;
             self.title = title;
             self.description = description;
             self.comment = resp.data.data;
+            self.created_at = created_at;
         });
     }
 });

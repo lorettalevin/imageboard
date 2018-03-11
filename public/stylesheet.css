@@ -1,6 +1,10 @@
-* {
+
+
+body {
     background-color: rgb(208, 204, 246);
-    font-family: arial;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 img {
@@ -11,7 +15,9 @@ img {
 
 p {
     color: rgb(98, 73, 157);
-    font-size: 20px;
+    font-size: 30px;
+    font-family: 'Amatic SC', cursive;
+    text-align: center;
 }
 
 form {
@@ -26,27 +32,31 @@ input {
     align-content: space-around;
     width: 150px;
     height: 25px;
+    margin: 5px;
     background-color: rgb(165, 189, 220);
     font-size: 15px;
 }
 
 button {
     width: 75px;
-    height: 25px;
+    height: 38px;
     background-color: rgb(165, 189, 220);
-    border-radius: 10px;
+    border-radius: 20px;
     font-size: 15px;
     color: #827F7C;
 }
 
-body {
-    position: relative;
-    left: 1.5%;
+button:hover {
+    background-color: rgb(109, 96, 158);
+}
+
+#main {
+    text-align: center;
 }
 
 #choose-file {
     width: 200px;
-    height: 22px;
+    height: 26px;
     font-size: 15px;
     color: #827F7C;
     padding: 2px;
@@ -54,49 +64,77 @@ body {
 
 #title {
     color: rgb(98, 73, 157);
-    display: flex;
-    justify-content: center;
+    text-align: center;
+    font-size: 45px;
+    font-family: 'Lobster', cursive;
 }
 
 .image-container {
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
     flex-wrap: wrap;
-
 }
 
 #large-image {
-    height: 100px;
-    width: 100px;
-    display: flex;
-    justify-content: center;
-    order: 1;
+    height: 400px;
+    width: 400px;
 }
 
 #modal {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0, 0, 0, .75);
+    overflow-y: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#modal-inner {
     background-color: #5f2bc2ed;
-    height: 75%;
-    width: 75%;
-    position: absolute;
-    left: 12%;
-    bottom: 12%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 10px;
+}
+
+.modal-right {
     display: flex;
     flex-direction: column;
-    /* justify-content: flex-end;
-    align-items: flex-start; */
 }
 
 .modal-text {
     display: flex;
     flex-direction: column;
-    order: 2;
-    /* color: rgb(50, 215, 9); */
+    color: white;
+    font-family: 'Amatic SC', cursive;
+    text-align: center;
+}
+
+#modal-form {
+    display: flex;
+    order: -1;
 }
 
 #X {
     display: flex;
     justify-content: flex-end;
-    align-content: flex-end;
-    color: rgb(50, 215, 9);
-    padding: 10px;
+    color: white;
+    font-family: georgia;
+    font-size: 20px;
+    order: -2;
+}
+
+#more-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
+
+@media screen and (max-width: 800px) {
+  .uploader-form { display: block; };
+
 }

@@ -6,43 +6,52 @@
 <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="./stylesheet.css">
+    <link href="https://fonts.googleapis.com/css?family=Amatic+SC|Lobster" rel="stylesheet">
     <title>Imageboard - Vue.js</title>
 </head>
 
 <body>
-    <h1 id="title">Finstagram</h1>
+    <h1 id="title">An Ode To StreetArtGlobe</h1>
     <div id="main">
         <modal-component v-on:close="modalShut" v-if="selectedImageID" v-bind:selected-image-i-d="selectedImageID">
         </modal-component>
-        <form>
+        <form class="uploader-form">
             <input v-model="formStuff.title" type="text" name="title" placeholder="Title">
             <input v-model="formStuff.description" type="text" name="description" placeholder="Description">
             <input v-model="formStuff.username" type="text" name="username" placeholder="Username">
             <input id="choose-file" v-on:change="handleChange" type="file">
-            <button v-on:click="handleSubmit">Submit</button>
+            <button v-on:click="handleSubmit">SUBMIT</button>
         </form>
         <div class="image-container">
             <div v-for="image in images">
                 <img v-bind:src="image.image" alt="image" v-on:click="showImage(image.id)">
-                <!-- <a v-bind:href="'#' + image.id" v-for"image in images" class="item" alt="image" v-on:click="showImage(image.id)"> -->
                 <p>{{image.title}}</p>
             </div>
         </div>
-        <button v-on:click="morePics" id="more-button">MORE</button>
+        <div id="more-button">
+            <button v-on:click="morePics">MORE</button>
+        </div>
     </div>
     <script id="modal-template" type="x-template">
         <div id="modal">
-            <p id="X" v-on:click="closeModal">X</p>
-            <img id="large-image" v-bind:src="image" />
-            <h2 class="modal-text">{{title}}</h2>
-            <h3 class="modal-text">{{description}}</h3>
-            <p class="modal-text">{{username}}</p>
-            <form>
-                <input v-model="comment.comment" type="text" />
-                <input v-model="comment.username" type="text" />
-                <button v-on:click="postComment">Submit</button>
-            </form>
-            <p v-for="item in comment">{{item.username}}: {{item.comment}}</p>
+            <div id="modal-inner">
+                <div class='modal-left'>
+                    <img id="large-image" v-bind:src="image" />
+                    <h2 class="modal-text">{{title}}</h2>
+                    <h3 class="modal-text">{{description}}</h3>
+                    <p class="modal-text">Uploaded by {{username}}</p>
+                </div>
+                <div class='modal-right'>
+                    <p id="X" v-on:click="closeModal">X</p>
+                    <p class="modal-text" v-for="item in comment">{{item.username}}: {{item.comment}}</p>
+                    <form id="modal-form">
+                        <input v-model="comment.comment" type="text" placeholder="Comment"/>
+                        <input v-model="comment.username" type="text" placeholder="Username" />
+                        <button v-on:click="postComment">SUBMIT</button>
+                    </form>
+                </div>
+            </div>
+
         </div>
     </script>
     <script src="/js/vue.js"></script>
