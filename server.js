@@ -7,7 +7,7 @@ const bodyParser = require('body-parser');
 const multer = require('multer');
 const uidSafe = require('uid-safe');
 const path = require('path');
-const s3 = require('./config/s3.js');
+const s3 = require('./config/s3');
 
 app.use(express.static('public'));
 
@@ -71,4 +71,4 @@ app.get("/scroll/:lastImageID", (req, res) => {
     });
 });
 
-app.listen(8080, () => console.log("Listening"));
+app.listen(process.env.PORT || 8080);
