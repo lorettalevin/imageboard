@@ -10,15 +10,10 @@ if (process.env.NODE_ENV !== 'production') {
     db = spicedPg(process.env.DATABASE_URL);
 }
 
-
 // const db = spicedPg(`postgres:${dbUser}:${dbPass}@localhost:5432/imageboard`);
 // const dbUrl = process.env.DATABASE_URL || `postgres:${dbUser}:${dbPass}@localhost:5432/imageboard`;
 
-
 const {s3Url} = require("./config.json");
-
-
-
 
 function getImages() {
     return new Promise((resolve, reject) => {
