@@ -8,7 +8,7 @@ const multer = require('multer');
 const uidSafe = require('uid-safe');
 const path = require('path');
 const s3 = require('./config/s3');
-const favicon = require('serve-favicon');
+// const favicon = require('serve-favicon');
 
 app.use(express.static('public'));
 
@@ -16,9 +16,6 @@ app.use(bodyParser.urlencoded({extended: false}));
 
 app.use(bodyParser.json()); //sending info over to server as an object so we need this line so req.body won't be empty anymore
 
-// app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
-// app.use(favicon(path.join(__dirname, 'public', 'phone.ico')));
-app.use(favicon(__dirname + '/public/phone.ico'));
 
 
 var diskStorage = multer.diskStorage({
