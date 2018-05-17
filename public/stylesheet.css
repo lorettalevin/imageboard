@@ -91,6 +91,7 @@ button:hover {
     display: flex;
     justify-content: center;
     align-items: center;
+    transition: all 1s;
 }
 
 #modal-inner {
