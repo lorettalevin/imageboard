@@ -1,11 +1,24 @@
 //SERVER SIDE
 
 const spicedPg = require('spiced-pg');
-const {dbUser, dbPass} = require('./secrets.json');
+let db;
+
+if (process.env.NODE_ENV !== 'production') {
+    const {dbUser, dbPass} = require('./secrets.json');
+    db = spicedPg(`postgres:${dbUser}:${dbPass}@localhost:5432/imageboard`);
+} else {
+    db = spicedPg(process.env.DATABASE_URL);
+}
+
+
 // const db = spicedPg(`postgres:${dbUser}:${dbPass}@localhost:5432/imageboard`);
-const dbUrl = process.env.DATABASE_URL || `postgres:${dbUser}:${dbPass}@localhost:5432/imageboard`;
-const db = spicedPg(dbUrl);
+// const dbUrl = process.env.DATABASE_URL || `postgres:${dbUser}:${dbPass}@localhost:5432/imageboard`;
+
+
 const {s3Url} = require("./config.json");
+
+
+
 
 function getImages() {
     return new Promise((resolve, reject) => {
