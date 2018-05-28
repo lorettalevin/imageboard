@@ -10,13 +10,11 @@ const path = require('path');
 const s3 = require('./config/s3');
 // const favicon = require('serve-favicon');
 
-app.use(express.static('public'));
+app.use(express.static('./public'));
 
 app.use(bodyParser.urlencoded({extended: false}));
 
 app.use(bodyParser.json()); //sending info over to server as an object so we need this line so req.body won't be empty anymore
-
-
 
 var diskStorage = multer.diskStorage({
     destination: function(req, file, callback) {
