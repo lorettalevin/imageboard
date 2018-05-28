@@ -16,4 +16,4 @@ Image Upload:
 
 Leave a comment:
 
-<img src="public/upload.gif">
+<img src="public/modal.gif">
